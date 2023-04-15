@@ -14,4 +14,3 @@
 /videos/:id/edit -> Edit Video
 /videos/:id/upload -> Upload Video
 /videos/delete -> Delete Video
-/videos/qweqwes
