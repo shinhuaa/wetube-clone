@@ -14,3 +14,8 @@
 /videos/:id/edit -> Edit Video
 /videos/:id/upload -> Upload Video
 /videos/delete -> Delete Video
+
+/install express
+/install nodemon
+/install morgan
+/install pug
