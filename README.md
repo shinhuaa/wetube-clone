@@ -19,4 +19,4 @@
 /install nodemon
 /install morgan
 /install pug
-/set MVP.css = link (rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css") ->not essential
+/set MVP.css = link (rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css") -> not essential
