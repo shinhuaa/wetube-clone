@@ -3,7 +3,7 @@ import Video from "../models/Video"
 export const home = async(req, res) => {
   try{
     const videos = await Video.find({});
-    console.log(videos)
+    console.log(videos);
     return res.render("home", {pageTitle: "Home", videos});
   } catch{
     res.render("server-error")
@@ -28,7 +28,18 @@ export const getUpLoad = (req, res) => {
   return res.render("upload", {pageTitle: "Uploading Video"})
 }
 
-export const postUpLoad = (req, res) => {
-  const { title } = req.body;
+export const postUpLoad = async(req, res) => {
+  const { title, description, hashtags } = req.body;
+  const video = new Video({
+    title,
+    description,
+    createdAt: Date.now(),
+    hashtags: hashtags.split(",").map((word) => `#${word}`),
+    meta:{
+      view:0,
+      rating:0,  
+    }, 
+  })
+  await video.save();
   return res.redirect("/")
 } 

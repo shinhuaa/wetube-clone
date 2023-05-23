@@ -4,7 +4,7 @@
 //import express from "express"; === const express = require("express"); 왼쪽이 최신 버전 둘다 같음
 import express from "express";
 import morgan from "morgan";
-import globalRouter from "./routers/globalrouter";
+import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 
