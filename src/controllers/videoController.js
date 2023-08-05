@@ -6,7 +6,7 @@ export const home = async(req, res) => {
     console.log(videos);
     return res.render("home", {pageTitle: "Home", videos});
   } catch{
-    res.render("server-error")
+    res.render("server-error")  
   }
 }
 export const watch = (req, res) => {
@@ -30,16 +30,21 @@ export const getUpLoad = (req, res) => {
 
 export const postUpLoad = async(req, res) => {
   const { title, description, hashtags } = req.body;
-  const video = new Video({
-    title,
-    description,
-    createdAt: Date.now(),
-    hashtags: hashtags.split(",").map((word) => `#${word}`),
-    meta:{
-      view:0,
-      rating:0,  
-    }, 
-  })
-  await video.save();
-  return res.redirect("/")
-} 
+  try{
+    await Video.create({
+      title,
+      description,
+      hashtags: hashtags.split(",").map((word) => `#${word}`),
+      meta:{
+        view:0,
+        rating:0,  
+      }, 
+    })
+    return res.redirect("/")
+  } catch(error){
+    console.log(error);
+    return res.render("upload", {
+      pageTitle: "Uploading Video", 
+      errorMessage: error._message,});
+  }
+}
